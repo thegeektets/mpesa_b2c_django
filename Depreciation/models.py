@@ -7,6 +7,7 @@ from rest_framework.authtoken.models import Token
 from django.conf import settings
 
 
+
 class Depreciation (models.Model):
     Class = models.CharField(max_length=5)
     Rate = models.FloatField()
@@ -25,6 +26,7 @@ class Assets (models.Model):
 
     def __str__(self):
         return self.Name
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):

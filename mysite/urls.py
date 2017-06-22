@@ -5,6 +5,8 @@ from Depreciation.views import UserViewSet , AssetsViewSet , DepreciationViewSet
 from rest_framework.authtoken import views as rest_framework_views
 
 
+from rest_framework.authtoken import views as rest_framework_views
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'assets', AssetsViewSet)
