@@ -6,15 +6,15 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username','email']
+        fields = ['id','username','email']
 
 
 class AssetsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Assets
-        fields = ['Name','Price','Assignee','SerialNumber','DepClass']
+        fields = ['id','Name','Price','Assignee','SerialNumber','DepClass']
 
 class DepreciationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Depreciation
-        fields = ['Class','Rate']
+        fields = ['id','Class','Rate']
