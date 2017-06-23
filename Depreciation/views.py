@@ -5,20 +5,30 @@ from Depreciation.serializers import UserSerializer, DepreciationSerializer , As
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend ,FilterSet
 from rest_framework import generics, filters
-from django_searchbar.utils import SearchBar
+import django_filters
+
+#from django_searchbar.utils import SearchBar
 
 
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
+
+    class Filter(FilterSet):
+
+        class Meta:
+            model = User
+            fields = ['username']
+
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
     permission_class = (IsAuthenticated,)
-    filters_backend = (filters.SearchFilter,)
+    filter_class = Filter
+    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
     search_fields = ('username', 'email',)
 
     def post(self, request, *args, **kwargs):
