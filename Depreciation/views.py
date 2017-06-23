@@ -5,8 +5,9 @@ from Depreciation.serializers import UserSerializer, DepreciationSerializer , As
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework.response import Response
-
-
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, filters
+from django_searchbar.utils import SearchBar
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -15,7 +16,10 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_class = (IsAuthenticated)
+
+    permission_class = (IsAuthenticated,)
+    filters_backend = (filters.SearchFilter,)
+    search_fields = ('username', 'email',)
 
     def post(self, request, *args, **kwargs):
         if request.user.is_superuser:
