@@ -18,10 +18,15 @@ class UserViewSet(viewsets.ModelViewSet):
     """
 
     class Filter(FilterSet):
+        username = django_filters.CharFilter(name='username', lookup_expr='exact')
+        username_like = django_filters.CharFilter(name='username', lookup_expr='icontains')
 
         class Meta:
             model = User
-            fields = ['username']
+            fields = {
+                'username': ['exact'],  # match w/ the lookup_expr?
+                'username_like': ['icontains'],
+            }
 
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
