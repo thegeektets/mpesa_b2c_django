@@ -5,7 +5,7 @@ from Depreciation.serializers import UserSerializer, DepreciationSerializer , As
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend ,FilterSet
+from django_filters.rest_framework import DjangoFilterBackend,FilterSet
 from rest_framework import generics, filters
 import django_filters
 
