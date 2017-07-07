@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 class DepreciationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Depreciation
-        fields = ['id','Class','Rate']
+        fields = ['id','dclass','rate']
 
 class AssetsSerializer(serializers.ModelSerializer):
     class Meta:

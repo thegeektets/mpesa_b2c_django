@@ -9,8 +9,8 @@ from django.conf import settings
 
 
 class Depreciation (models.Model):
-    Class = models.CharField(max_length=5)
-    Rate = models.FloatField()
+    dclass = models.CharField(max_length=5)
+    rate = models.FloatField()
 
     def __str__(self):
         return self.Class
