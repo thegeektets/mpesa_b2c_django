@@ -9,12 +9,19 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id','username','email', 'first_name', 'last_name']
 
 
-class AssetsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Assets
-        fields = ['id','Name','Price','DOA','Assignee','SerialNumber','DepClass']
-
 class DepreciationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Depreciation
         fields = ['id','Class','Rate']
+
+class AssetsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Assets
+        fields = ['id','title','price','doa','assignee','assignee_id','serialnumber','depreciation_id' , 'depreciation']
+
+    depreciation = DepreciationSerializer(read_only=True)
+    depreciation_id = serializers.UUIDField(read_only=False)
+    assignee = UserSerializer(read_only=True)
+    assignee_id = serializers.UUIDField(read_only=False)
+
+

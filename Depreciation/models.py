@@ -17,12 +17,12 @@ class Depreciation (models.Model):
 
 
 class Assets (models.Model):
-    Name = models.CharField(max_length=25)
-    SerialNumber = models.CharField(max_length=15)
-    Price = models.FloatField()
-    DOA = models.DateField()
-    Assignee = models.ForeignKey(User, on_delete=models.CASCADE)
-    DepClass = models.ForeignKey(Depreciation, on_delete=models.CASCADE)
+    title = models.CharField(max_length=25)
+    serialnumber = models.CharField(max_length=15)
+    price = models.FloatField()
+    doa = models.DateField()
+    assignee = models.ForeignKey(User, on_delete=models.CASCADE)
+    depreciation = models.ForeignKey(Depreciation, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.Name
