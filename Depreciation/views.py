@@ -71,9 +71,22 @@ class AssetsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Assets to be viewed or edited.
     """
+    class AssetFilter(FilterSet):
+        startdate = django_filters.DateFilter(name='doa' , lookup_expr='gte')
+        enddate = django_filters.DateFilter(name='doa' , lookup_expr='lte')
+
+        class Meta:
+            model = Assets
+            fields = {
+                'startdate': ['gte'],  # match w/ the lookup_expr?
+                'enddate': ['lte'],
+            }
+
     queryset = Assets.objects.all()
     serializer_class = AssetsSerializer
     permission_classes = (IsAuthenticated,)
+    filter_class = AssetFilter
+    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
 
     def post(self, request, *args, **kwargs):
         if request.user.is_superuser:

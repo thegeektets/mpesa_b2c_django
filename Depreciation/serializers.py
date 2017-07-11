@@ -1,18 +1,21 @@
-from Depreciation.models import Assets , Depreciation
-from django.contrib.auth.models import User
+from Depreciation.models import Assets , Depreciation , User
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(read_only=True)
+
     class Meta:
         model = User
-        fields = ['id','username','email', 'first_name', 'last_name']
+        fields = '__all__'
 
 
 class DepreciationSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Depreciation
-        fields = ['id','dclass','rate']
+        fields = '__all__'
+
 
 class AssetsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,5 +26,6 @@ class AssetsSerializer(serializers.ModelSerializer):
     depreciation_id = serializers.UUIDField(read_only=False)
     assignee = UserSerializer(read_only=True)
     assignee_id = serializers.UUIDField(read_only=False)
+
 
 
