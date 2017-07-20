@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from django.conf import settings
 import uuid  # The uuid module
-from django.contrib.auth.base_user import AbstractBaseUser
 
 
 
@@ -15,8 +14,7 @@ class User (AbstractUser):
     username = models.CharField(unique=True , max_length=50)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.Class
+    
 
 class Depreciation (models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

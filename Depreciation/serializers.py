@@ -3,8 +3,6 @@ from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
-    id = serializers.UUIDField(read_only=True)
-
     class Meta:
         model = User
         fields = '__all__'
