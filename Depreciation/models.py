@@ -14,7 +14,7 @@ class User (AbstractUser):
     username = models.CharField(unique=True , max_length=50)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    
+
 
 class Depreciation (models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
