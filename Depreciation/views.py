@@ -1,5 +1,4 @@
-from Depreciation.models import Assets,Depreciation
-from django.contrib.auth.models import User
+from Depreciation.models import Assets,Depreciation, User
 from rest_framework import viewsets
 from Depreciation.serializers import UserSerializer, DepreciationSerializer , AssetsSerializer
 from rest_framework.decorators import api_view, permission_classes

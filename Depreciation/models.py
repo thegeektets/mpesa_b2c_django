@@ -10,9 +10,9 @@ from django.contrib.auth.base_user import AbstractBaseUser
 
 
 
-class User (AbstractBaseUser):
+class User (AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    username = models.CharField(max_length=50)
+    username = models.CharField(unique=True , max_length=50)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     def __str__(self):
