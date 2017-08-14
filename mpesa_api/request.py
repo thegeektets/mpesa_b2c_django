@@ -30,7 +30,7 @@ class OAuth:
         # convert password to byte array
         security_cred_array = bytearray(security_cred , 'utf8')
         # encrypt password using signed key
-        crypto = security_cert.encrypt(str(security_cred_array))
+        crypto = security_cert.encrypt(str(security_cred_array ,'utf8'))
         # convert result to base64
         encrypted_cred = b64encode(crypto)
         return encrypted_cred
