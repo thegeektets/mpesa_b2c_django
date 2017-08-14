@@ -32,6 +32,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             result = request.data
+            result = result['Result']
             data = {
                 'transactionid': result.TransactionID,
                 'resulttype': result.TransactionID,
