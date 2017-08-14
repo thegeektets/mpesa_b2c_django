@@ -32,7 +32,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             data = {
-                'result': json.loads(request.data.decode(encoding='UTF-8'))
+                'result': json.loads(request.data.decode(encoding='UTF-8')),
                 'refrencedata': json.loads(request.data.decode(encoding='UTF-8'))
             }
             serializer = MpesaLogSerializer(data=data)
