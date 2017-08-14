@@ -20,7 +20,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
 
     def list(self, request, *args, **kwargs):
-        if request.user.is_superuser is True or request.user.is_staff:
+        if request.user.is_superuser or request.user.is_staff:
             b2c = B2C()
             r = b2c.fire(254702990800,100,'testdata','survey payout')
             return Response(r)
@@ -29,16 +29,18 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
     @list_route(methods=['post','get'])
     def call_back(self, request, **kwargs):
-        module_dir = os.path.dirname(__file__)
-        file_path = os.path.join(module_dir, 'api_log.txt')
-        logging.basicConfig(filename=file_path, level=logging.DEBUG)
-        logging.debug('log')
-        logging.info(request.data)
 
         if request.method == 'POST':
+            result = request.data['Result']
             data = {
-                'request': json.dumps(request.data),
-                }
+                'transactionid': result['TransactionID'],
+                'resulttype': result['TransactionID'],
+                'resultcode': result['ResultCode'],
+                'resultdesc': result['ResultDesc'],
+                'originatorconversationid':result['OriginatorConversationID'],
+                'conversationid': result['ConversationID'],
+                'referencedata': json.dumps(result['ReferenceData']),
+            }
             serializer = MpesaLogSerializer(data=data)
 
             if serializer.is_valid():
