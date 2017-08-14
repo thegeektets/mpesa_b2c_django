@@ -31,7 +31,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
     def call_back(self, request, **kwargs):
 
         if request.method == 'POST':
-            result = json.dumps(request.data)
+            result = request.data
             result = result.Result
             data = {
                 'transactionid': result.TransactionID,
