@@ -32,7 +32,6 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             result = request.data
-            result = result.Result
             data = {
                 'transactionid': result.TransactionID,
                 'resulttype': result.TransactionID,
@@ -40,6 +39,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
                 'resultdesc': result.ResultDesc,
                 'originatorconversationid':result.riginatorConversationID,
                 'conversationid': result.ConversationID,
+                'result': result,
                 'referencedata': json.dumps(result.ReferenceData),
             }
             serializer = MpesaLogSerializer(data=data)

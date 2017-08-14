@@ -14,5 +14,6 @@ class MpesaLog(models.Model):
     originatorconversationid = models.CharField(max_length=100, blank=True, null=True)
     conversationid = models.CharField(max_length=100, blank=True, null=True)
     referencedata = jsonfield.JSONField()
+    result = jsonfield.JSONField()
 
 
