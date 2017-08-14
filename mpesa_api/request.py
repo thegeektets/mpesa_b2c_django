@@ -18,20 +18,13 @@ class OAuth:
 
     def get_security_credentials(self):
         security_cred = settings.MPESA_INITIATOR_PASS
-        # get current directory
         module_dir = os.path.dirname(__file__)
-        # read mpesa public key
         file_path = os.path.join(module_dir, 'public.txt')
-        f=open(file_path,'r')
-        # import key to rsa
-        security_cert = RSA.importKey(f.read())
-        # sign key using PKCS1_v1_5
+        with open(file_path, 'r') as f:
+            security_cert = RSA.importKey(f.read())
         security_cert = PKCS1_v1_5.new(security_cert)
-        # convert password to byte array
         security_cred_array = bytearray(security_cred , 'utf8')
-        # encrypt password using signed key
         crypto = security_cert.encrypt(security_cred_array)
-        # convert result to base64
         encrypted_cred = b64encode(crypto)
         return encrypted_cred
 
