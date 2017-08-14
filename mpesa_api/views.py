@@ -4,7 +4,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import list_route, detail_route
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser,IsAuthenticated
+from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
 from rest_framework import permissions
 
 from mpesa_api.models import MpesaLog
@@ -12,27 +12,19 @@ from mpesa_api.request import OAuth, B2C
 from mpesa_api.serializers import MpesaLogSerializer
 from rest_framework import status
 
-class IsCreationOrIsAuthenticated(permissions.BasePermission):
-
-    def has_permission(self, request, view):
-        if not request.user.is_authenticated():
-            if view.action == 'create':
-                return True
-            else:
-                return False
-        else:
-            return True
-
 class MpesaAPIViewSet(viewsets.ModelViewSet):
     queryset = MpesaLog.objects.all()
     serializer_class = MpesaLogSerializer
-    permission_classes = (IsCreationOrIsAuthenticated, )
+    permission_classes = (AllowAny, )
 
 
     def list(self, request, *args, **kwargs):
-        b2c = B2C()
-        r = b2c.fire(254702990800,100,'testdata','survey payout')
-        return Response(r)
+        if request.user.is_superuser is True or request.user.is_staff:
+            b2c = B2C()
+            r = b2c.fire(254702990800,100,'testdata','survey payout')
+            return Response(r)
+        else:
+            raise PermissionDenied
 
     @list_route(methods=['post','get'])
     def call_back(self, request, **kwargs):
