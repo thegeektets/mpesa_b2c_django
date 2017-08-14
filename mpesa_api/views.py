@@ -32,7 +32,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             result = request.data
-            result = result['Result']
+            result = json.dumps(result)
             data = {
                 'result': result,
             }
