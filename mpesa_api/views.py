@@ -34,6 +34,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
             result = json.dumps(request.data)
             data = {
                 'result': result,
+                'refrencedata': result,
             }
             serializer = MpesaLogSerializer(data=data)
 
