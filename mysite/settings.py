@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8y%8e1@dt6@p=vawyq_-uep-+l!!5o#!b=xf44chtc7jwi2t!('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
 ALLOWED_HOSTS = [
     'mpesa-callback.herokuapp.com',
