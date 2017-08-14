@@ -16,28 +16,6 @@ class User (AbstractUser):
     last_name = models.CharField(max_length=100)
 
 
-class Depreciation (models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    dclass = models.CharField(max_length=5)
-    rate = models.FloatField()
-
-    def __str__(self):
-        return self.Class
-
-
-class Assets (models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=25)
-    serialnumber = models.CharField(max_length=15)
-    price = models.FloatField()
-    doa = models.DateField()
-    assignee = models.ForeignKey(User)
-    depreciation = models.ForeignKey(Depreciation)
-
-    def __str__(self):
-        return self.Class
-
-
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:

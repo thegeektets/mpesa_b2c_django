@@ -1,7 +1,8 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
-from Depreciation.views import UserViewSet , AssetsViewSet , DepreciationViewSet
+from user.views import UserViewSet
+from mpesa_api.views import MpesaAPIViewSet
 from rest_framework.authtoken import views as rest_framework_views
 
 
@@ -9,8 +10,7 @@ from rest_framework.authtoken import views as rest_framework_views
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'assets', AssetsViewSet)
-router.register(r'depreciation', DepreciationViewSet)
+router.register(r'mpesa', MpesaAPIViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
