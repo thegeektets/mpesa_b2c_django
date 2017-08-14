@@ -32,7 +32,9 @@ SECRET_KEY = '8y%8e1@dt6@p=vawyq_-uep-+l!!5o#!b=xf44chtc7jwi2t!('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mpesa-callback.herokuapp.com',
+]
 
 AUTH_USER_MODEL = 'user.User'
 
