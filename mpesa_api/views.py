@@ -31,8 +31,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
     def call_back(self, request, **kwargs):
 
         if request.method == 'POST':
-            result = request.data
-            result = json.dumps(result)
+            result = json.dumps(request.data)
             data = {
                 'result': result,
             }
