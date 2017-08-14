@@ -32,15 +32,15 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             result = json.dumps(request.data)
-            result = result['Result']
+            result = result.Result
             data = {
-                'transactionid': result['TransactionID'],
-                'resulttype': result['TransactionID'],
-                'resultcode': result['ResultCode'],
-                'resultdesc': result['ResultDesc'],
-                'originatorconversationid':result['OriginatorConversationID'],
-                'conversationid': result['ConversationID'],
-                'referencedata': json.dumps(result['ReferenceData']),
+                'transactionid': result.TransactionID,
+                'resulttype': result.TransactionID,
+                'resultcode': result.ResultCode,
+                'resultdesc': result.ResultDesc,
+                'originatorconversationid':result.riginatorConversationID,
+                'conversationid': result.ConversationID,
+                'referencedata': json.dumps(result.ReferenceData),
             }
             serializer = MpesaLogSerializer(data=data)
 
