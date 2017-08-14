@@ -28,7 +28,7 @@ class OAuth:
         # sign key using PKCS1_v1_5
         security_cert = PKCS1_v1_5.new(security_cert)
         # convert password to byte array
-        security_cred_array = bytearray(security_cred)
+        security_cred_array = bytearray(security_cred , 'utf8')
         # encrypt password using signed key
         crypto = security_cert.encrypt(str(security_cred_array))
         # convert result to base64
