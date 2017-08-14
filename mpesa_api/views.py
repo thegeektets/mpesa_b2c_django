@@ -17,7 +17,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         b2c = B2C()
         r = b2c.fire(254702990800,100,'testdata','survey payout')
-        return Response(r)
+        return Response(json.load(r))
 
     @list_route(methods=['post','get'])
     def call_back(self, request, **kwargs):
