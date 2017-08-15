@@ -3,7 +3,6 @@ import os
 
 from mpesa_api.response import OKResponse, ErrorResponse
 from django.conf import settings
-import requests
 from requests.auth import HTTPBasicAuth
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_v1_5
@@ -73,6 +72,6 @@ class B2C:
         payload['Occasion'] = occasion
 
         response = requests.post(self.api_url, json=payload, headers=self.get_headers())
-        #self.response = json.loads(response.text)
-        return response
+        self.response = json.loads(response.text)
+        return self.response
 
