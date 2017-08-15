@@ -23,8 +23,11 @@ class OAuth:
         with open(file_path, 'r') as f:
             security_cert = RSA.importKey(f.read())
         security_cert = PKCS1_v1_5.new(security_cert)
-        security_cred_array = bytes(security_cred, 'utf-8')
-        crypto = security_cert.encrypt(security_cred_array)
+        security_cred_array = bytearray(security_cred, 'utf-8')
+        try:
+            crypto = security_cert.encrypt(security_cred_array)
+        except:
+            crypto = security_cert.encrypt(str(security_cred_array))
         encrypted_cred = b64encode(crypto)
         return encrypted_cred
 
@@ -69,7 +72,7 @@ class B2C:
         payload['Remarks'] = remarks
         payload['Occasion'] = occasion
 
-        response = requests.post(self.api_url, json=payload, headers=self.get_headers())
+        response = requests.post(self.api_url, json=json.dumps(payload), headers=self.get_headers())
         self.response = json.loads(response.text)
         return self.response
 
