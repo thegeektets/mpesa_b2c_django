@@ -21,8 +21,8 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         if request.user.is_superuser or request.user.is_staff:
-            b2c = B2C()
-            r = b2c.fire(254702990800,100,'testdata','survey payout')
+            oath = OAuth()
+            r = oath.get_security_credentials()
             return Response(r)
         else:
             raise PermissionDenied
