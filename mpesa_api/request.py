@@ -27,7 +27,7 @@ class OAuth:
             crypto = security_cert.encrypt(security_cred_array)
         except:
             crypto = security_cert.encrypt(str(security_cred_array))
-        encrypted_cred = b64encode(crypto)
+        encrypted_cred = b64encode(crypto).decode()
         return encrypted_cred
 
 class B2C:
@@ -71,7 +71,7 @@ class B2C:
         payload['Remarks'] = remarks
         payload['Occasion'] = occasion
 
-        response = requests.post(self.api_url, headers=self.get_headers())
+        response = requests.post(self.api_url, json = payload, headers=self.get_headers())
         self.response = json.loads(response.text)
         return self.response
 
