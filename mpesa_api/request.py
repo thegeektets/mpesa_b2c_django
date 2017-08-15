@@ -74,5 +74,5 @@ class B2C:
 
         ##response = requests.post(self.api_url, json=payload, headers=self.get_headers())
         ##self.response = json.loads(response.text)
-        return self.request
+        return json.loads(self.request)
 
