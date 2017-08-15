@@ -23,7 +23,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
         if request.user.is_superuser or request.user.is_staff:
             b2c = B2C()
             r = b2c.fire(254702990800,100,'testdata','survey payout')
-            return Response(r)
+            return json.dumps(r.decode("utf-8"))
         else:
             raise PermissionDenied
 
@@ -42,7 +42,8 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
-
-            serializer = MpesaLogSerializer(instance=self.queryset, many=True)
-
-            return Response(serializer.data)
+            if request.user.is_superuser or request.user.is_staff:
+                serializer = MpesaLogSerializer(instance=self.queryset, many=True)
+                return Response(serializer.data)
+            else:
+                raise PermissionDenied
