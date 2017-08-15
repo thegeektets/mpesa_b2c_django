@@ -32,8 +32,8 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
 
         if request.method == 'POST':
             data = {
-                'result': json.dump(request.data),
-                'refrencedata': json.dump(request.data)
+                'result': json.dumps(request.data),
+                'refrencedata': json.dumps(request.data)
             }
             serializer = MpesaLogSerializer(data=data)
 

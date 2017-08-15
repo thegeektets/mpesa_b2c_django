@@ -34,6 +34,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'mpesa-callback.herokuapp.com',
+    'localhost:8001/',
+    '127.0.0.1:8001'
 ]
 
 AUTH_USER_MODEL = 'user.User'
