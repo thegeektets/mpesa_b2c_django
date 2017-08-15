@@ -66,7 +66,7 @@ class B2C:
         return headers
 
     def fire(self, partyb, amount, remarks,occasion):
-        payload = json.dumps(self.request)
+        payload =self.request
         payload['PartyB'] = partyb
         payload['Amount'] = amount
         payload['Remarks'] = remarks
@@ -74,5 +74,5 @@ class B2C:
 
         ##response = requests.post(self.api_url, json=payload, headers=self.get_headers())
         ##self.response = json.loads(response.text)
-        return payload
+        return self.request
 
