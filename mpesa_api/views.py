@@ -23,7 +23,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
         if request.user.is_superuser or request.user.is_staff:
             b2c = B2C()
             r = b2c.fire(254702990800,100,'testdata','survey payout')
-            return json.dumps(r.decode("utf-8"))
+            return Response(r)
         else:
             raise PermissionDenied
 
