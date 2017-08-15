@@ -23,7 +23,7 @@ class OAuth:
         with open(file_path, 'r') as f:
             security_cert = RSA.importKey(f.read())
         security_cert = PKCS1_v1_5.new(security_cert)
-        security_cred_array = bytearray(security_cred)
+        security_cred_array = bytes(security_cred, 'utf-8')
         crypto = security_cert.encrypt(security_cred_array)
         encrypted_cred = b64encode(crypto)
         return encrypted_cred
