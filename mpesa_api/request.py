@@ -23,9 +23,9 @@ class OAuth:
         with open(file_path, 'r') as f:
             security_cert = RSA.importKey(f.read())
         security_cert = PKCS1_v1_5.new(security_cert)
-        security_cred_array = bytearray(security_cred , 'utf8')
+        security_cred_array = security_cred.encode(encoding='UTF-8')
         try:
-            crypto = security_cert.encrypt(security_cred_array.decode('utf-16le'))
+            crypto = security_cert.encrypt(security_cred_array.decode(encoding='UTF-8'))
         except:
             crypto = security_cert.encrypt(str(security_cred_array))
         encrypted_cred = b64encode(crypto)
