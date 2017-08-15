@@ -37,16 +37,16 @@ class B2C:
         'Content-Type': "application/json"
     }
     request = {
-        "InitiatorName": "testapi782",
-        "SecurityCredential": OAuth().get_security_credentials(),
-        "CommandID": "PromotionPayment",
-        "Amount": "",
-        "PartyA": settings.MPESA_SHORTCODE,
-        "PartyB": " ",
-        "Remarks": " ",
-        "QueueTimeOutURL": settings.MPESA_CALLBACK_URL,
-        "ResultURL": settings.MPESA_CALLBACK_URL,
-        "Occasion": ""
+        'InitiatorName': "testapi782",
+        'SecurityCredential': OAuth().get_security_credentials(),
+        'CommandID': "PromotionPayment",
+        'Amount': "",
+        'PartyA': settings.MPESA_SHORTCODE,
+        'PartyB': " ",
+        'Remarks': " ",
+        'QueueTimeOutURL': settings.MPESA_CALLBACK_URL,
+        'ResultURL': settings.MPESA_CALLBACK_URL,
+        'Occasion': ""
     }
     api_url = settings.MPESA_API_BASE_URL+"mpesa/b2c/v1/paymentrequest"
     status = None
@@ -72,7 +72,7 @@ class B2C:
         payload['Remarks'] = remarks
         payload['Occasion'] = occasion
 
-        response = requests.post(self.api_url, json=payload, headers=self.get_headers())
-        self.response = json.loads(response.text)
-        return self.response
+        #response = requests.post(self.api_url, json=payload, headers=self.get_headers())
+        #self.response = json.loads(response.text)
+        return payload
 
