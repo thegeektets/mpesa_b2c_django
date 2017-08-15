@@ -1,6 +1,6 @@
 import json
 import os
-
+import requests
 from mpesa_api.response import OKResponse, ErrorResponse
 from django.conf import settings
 from requests.auth import HTTPBasicAuth
