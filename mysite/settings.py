@@ -142,7 +142,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'callback_database'),
+        'NAME': os.path.join(BASE_DIR, 'heroku_database'),
     }
 }
 
