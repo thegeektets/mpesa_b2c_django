@@ -7,6 +7,12 @@ from django.db import models
 
 class MpesaLog(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    result = jsonfield.JSONField()
+    result_type = models.CharField(max_length=100)
+    result_code = models.CharField(max_length=100)
+    result_desc = models.TextField()
+    originator_conversation_id = models.CharField(max_length=100)
+    conversation_id = models.CharField(max_length=100)
+    transaction_id = models.CharField(max_length=100)
+    refrence_data = jsonfield.JSONField()
 
 
