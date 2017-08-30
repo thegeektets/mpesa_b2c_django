@@ -31,8 +31,10 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
     def call_back(self, request, **kwargs):
 
         if request.method == 'POST':
+            callback_result = json.loads(json.dumps(request.data))
+
             data = {
-                'result': json.dumps(request.data),
+                'result': callback_result.Result,
             }
             serializer = MpesaLogSerializer(data=data)
 
