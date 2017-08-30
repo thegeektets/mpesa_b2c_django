@@ -13,6 +13,6 @@ class MpesaLog(models.Model):
     originator_conversation_id = models.CharField(max_length=100)
     conversation_id = models.CharField(max_length=100)
     transaction_id = models.CharField(max_length=100)
-    refrence_data = jsonfield.JSONField()
+    reference_data = jsonfield.JSONField()
 
 

@@ -39,7 +39,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
                 'originator_conversation_id': callback_result['Result']['OriginatorConversationID'],
                 'conversation_id': callback_result['Result']['ConversationID'],
                 'transaction_id': callback_result['Result']['TransactionID'],
-                'refrence_data':callback_result['Result']['ReferenceData'],
+                'reference_data':json.dumps(callback_result['Result']['ReferenceData']),
 
             }
             serializer = MpesaLogSerializer(data=data)
@@ -48,6 +48,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
+                print(serializer.errors)
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             if request.user.is_superuser or request.user.is_staff:
