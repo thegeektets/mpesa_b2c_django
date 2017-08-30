@@ -34,7 +34,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
             callback_result = json.loads(json.dumps(request.data))
 
             data = {
-                'result': callback_result.Result,
+                'result': callback_result.result,
             }
             serializer = MpesaLogSerializer(data=data)
 
