@@ -33,6 +33,7 @@ class MpesaAPIViewSet(viewsets.ModelViewSet):
         if request.method == 'POST':
             callback_result = json.loads(json.dumps(request.data))
             print(callback_result['Result'])
+            print(callback_result['Result']['ConversationID'])
             data = {
                 'result': callback_result,
             }
