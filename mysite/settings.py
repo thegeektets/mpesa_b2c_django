@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-MPESA_SHORTCODE ='600782'
-MPESA_API_BASE_URL = 'https://sandbox.safaricom.co.ke/'
-MPESA_API_CONSUMER_KEY = 'O6flD3gS6FCCzwYXxY6D3Gss3V51yGGh'
-MPESA_API_CONSUMER_SECRET = 'rvpceib8GzxGOBup'
-MPESA_INITIATOR_PASS ='Shpe2M7C'
-MPESA_CALLBACK_URL='https://mpesa-callback.herokuapp.com/api/v1/mpesa/call_back/'
+MPESA_SHORTCODE =''
+MPESA_API_BASE_URL = ''
+MPESA_API_CONSUMER_KEY = ''
+MPESA_API_CONSUMER_SECRET = ''
+MPESA_INITIATOR_PASS =''
+MPESA_CALLBACK_URL=''
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
