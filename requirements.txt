@@ -12,7 +12,7 @@ jsonfield==2.0.2
 Naked==0.1.31
 pycrypto==2.6.1
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.3
 shellescape==3.4.1
 urllib3==1.22
